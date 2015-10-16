@@ -1,9 +1,31 @@
 Rails.application.routes.draw do
+  resources :emergency_alerts do
+    collection do 
+      get 'create_alert_modaly'
+    end
+  end
+
+  resources :personal_health_records do
+    collection do
+      get 'give_health_record'
+    end
+  end
+
+  resources :welcome do 
+    collection do
+      get 'ER'
+      get 'docter'
+    end
+  end
+
+
+  resources :patients
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#welcome'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

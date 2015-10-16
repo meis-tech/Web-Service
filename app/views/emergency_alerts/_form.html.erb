@@ -1,0 +1,17 @@
+<%= form_for(@emergency_alert) do |f| %>
+  <% if @emergency_alert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@emergency_alert.errors.count, "error") %> prohibited this emergency_alert from being saved:</h2>
+
+      <ul>
+      <% @emergency_alert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing personal_health_records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personal_health_records.each do |personal_health_record| %>
+      <tr>
+        <td><%=personal_health_record.allergies%></td>
+        <td><%=personal_health_record.medication%></td>
+        <td><%=personal_health_record.blood_type%></td>
+        <td><%=personal_health_record.chronic_disease%></td>
+        <td><%=personal_health_record.organ_donor%></td>
+        <td><%=Patient.where(:id => personal_health_record.patient_id).first.last_name%></td>
+        <td><%= link_to 'Show', personal_health_record %></td>
+        <td><%= link_to 'Edit', edit_personal_health_record_path(personal_health_record) %></td>
+        <td><%= link_to 'Destroy', personal_health_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Personal health record', new_personal_health_record_path %>

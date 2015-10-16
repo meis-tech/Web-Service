@@ -1,0 +1,38 @@
+<%= form_for(@personal_health_record) do |f| %>
+  <% if @personal_health_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal_health_record.errors.count, "error") %> prohibited this personal_health_record from being saved:</h2>
+
+      <ul>
+      <% @personal_health_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+      <div> Allergies
+      <%= f.text_field(:allergies) %> 
+    </div>
+    <div> BloodType
+      <%= f.text_field(:blood_type) %>
+    </div>
+    <div> Chronic Disease
+      <%= f.text_field(:chronic_disease) %>
+    </div>
+    <div> Medication
+      <%= f.text_field(:medication) %>
+    </div>
+    <div> Organ_donor
+      <%= f.check_box :organ_donor %>
+    </div>
+
+    <div> Patient
+      <% options = options_from_collection_for_select(@patients, 'id', 'last_name') %>
+      <%= f.select :patient_id, options %>
+    </div>
+
+    <%= f.submit %>
+  </div>
+<% end %>
