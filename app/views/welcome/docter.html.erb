@@ -1,6 +1,32 @@
-<div>Physicains office information input</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div id="grad" style="width:550px;height:300px;display: block;margin-left: auto;margin-right: auto;border-radius: 15px;font-family:disco">
 
-<div>
-<%= link_to "People", patients_path() %>
-<%= link_to "Records", personal_health_records_path() %>
+  	<div class= "row" style="padding-top:105px;padding-left:40px;margin-left: 150px;">
+
+  	  <div style="border-radius:15px;background-color:white;height: 35px;width: 160px;line-height: 32px;">
+  	  	<%= link_to(patients_path()) do %>
+  	  	  <div style="font-size:30px;height: 35px; margin-left: 6px;"> patients
+  	  	  </div>
+  	  	<% end %>
+      </div>
+
+  	</div>
+
+  	<div class= "row" style="padding-top:25px;padding-left:40px;margin-left: 15px;"> 
+  	  <div style="border-radius:15px;background-color:white;height: 35px;width: 440px;line-height: 32px;">
+  	  	<%= link_to(personal_health_records_path()) do %>
+  	      <div style="font-size:30px;height: 35px; margin-left: 6px;">personal health records
+  	  	  </div>
+  	  	<% end %>
+      </div>
+
+  	</div>
+  </div>
 </div>
+
+
+<!-- <div>Physicains office information input</div>
+<div>
+< link_to "People", patients_path() %>
+< link_to "Records", personal_health_records_path() %>
+</div> -->

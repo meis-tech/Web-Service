@@ -1,4 +1,87 @@
-<h1>Listing patients</h1>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:750px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
+  <div style="margin-bottom: 30px; FONT-SIZE: 50px;color: white;margin-left: 50px;"> Find Patient Table</div>
+  <table id="patient_table" style="width: 650px;border-radius:15px;border-radius:15px;background-color:white">
+    <thead>
+      <tr style="border-bottom:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> name </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> personal id </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> dob </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> gender</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;text-align: center;"> select</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+      <tr style="border-top:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= patient.first_name + " " + patient.last_name %> </td>
+        <% if !patient.personal_id.nil? %>
+        <% id = "%x" % patient.personal_id  %>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%="0000000" +  id %> </td>
+        <% else %>
+          <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= patient.personal_id %> </td>
+        <% end %>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= patient.DOB %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= patient.sex %></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-bottom-right-radius:10px"> <%= render partial: '/partials/action', locals: {pass: patient}%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div style="margin-bottom: 20px;">
+    <div>
+      <%= link_to(new_patient_path()) do %>
+        <div>
+          <button type="submit" style="margin-top:15px;border-radius: 10px;color: #3A5CAC;    float: left;
+      margin-right: 10px;" class="btn btn-default">+create</button>
+        </div>
+      <% end %>
+    </div>
+      <div>
+      <%= link_to(docter_welcome_index_path()) do %>
+        <div>
+          <button type="submit" style="margin-top:15px;border-radius: 10px;color: #3A5CAC;float: left;margin-right: 15px;" class="btn btn-default">back</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#patient_table').dataTable( {
+       // "bPaginate": false,
+        "bLengthChange": false,  //
+ // search menu      "bFilter": false,
+        "ordering": false,
+        "info": false,
+        "initComplete" : function() {
+          var pages = $("#patient_table_wrapper")[0].children[2].children[1].children[0];
+          var jpage = $(pages);
+          jpage.addClass("page_view");
+          // var prev = $("#patient_table_wrapper")[0].children[2].children[0];
+          // var jprev = $(prev);
+          // var next = $("#patient_table_wrapper")[0].children[2].children[2];
+          // var jnext = $(next);
+          var search = $("#patient_table_filter")[0].children[0].children[0];
+          var jsearch = $(search);
+          var label = $("#patient_table_filter")[0].children[0]
+          var jlabel = $(label);
+          jpage.css({"color":"white"})
+          $("#patient_table_paginate").css({"float": "right","margin-top":"10px" });
+          // jprev.css({"color":"white !important"});
+          // jnext.css({"color":"white !important"});
+          jlabel.css({"color":"white","margin-bottom":"20px","margin-left": "390px"});
+          jsearch.css({"border-radius":"10px", "border":"none","color":"black","margin-left": "10px"});
+        }
+    });
+  } );
+
+</script>
+
+
+<!-- <h1>Listing patients</h1>
 
 <table>
   <thead>
@@ -21,6 +104,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Patient', new_patient_path %>
+<br> -->

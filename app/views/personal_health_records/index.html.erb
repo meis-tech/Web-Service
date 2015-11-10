@@ -1,29 +1,71 @@
-<h1>Listing personal_health_records</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @personal_health_records.each do |personal_health_record| %>
-      <tr>
-        <td><%=personal_health_record.allergies%></td>
-        <td><%=personal_health_record.medication%></td>
-        <td><%=personal_health_record.blood_type%></td>
-        <td><%=personal_health_record.chronic_disease%></td>
-        <td><%=personal_health_record.organ_donor%></td>
-        <td><%=Patient.where(:id => personal_health_record.patient_id).first.last_name%></td>
-        <td><%= link_to 'Show', personal_health_record %></td>
-        <td><%= link_to 'Edit', edit_personal_health_record_path(personal_health_record) %></td>
-        <td><%= link_to 'Destroy', personal_health_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:750px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
+  <div style="margin-bottom: 30px; FONT-SIZE: 35px;color: white;margin-left: 50px;"> Patient Health Record Table</div>
+  <table id="patient_table" style="width: 650px;border-radius:15px;border-radius:15px;background-color:white">
+    <thead>
+      <tr style="border-bottom:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> name </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> personal id </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> dob </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> gender</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;text-align: center;"> select</td>
       </tr>
+    </thead>
+    <tbody>
+    <% @personal_health_records.each do |personal_health_record| %>
+      <tr style="border-top:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= personal_health_record.patient.first_name + " " + personal_health_record.patient.last_name %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= personal_health_record.patient.personal_id %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= personal_health_record.patient.DOB %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= personal_health_record.patient.sex %></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-bottom-right-radius:10px"> <%= render partial: '/partials/action_PHR', locals: {pass: personal_health_record}%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+  <div>
+    <%= link_to(docter_welcome_index_path()) do %>
+      <div>
+        <button type="submit" style="margin-top:15px;border-radius: 10px;color: #3A5CAC;float: left;margin-right: 15px;margin-bottom:10px;" class="btn btn-default">back</button>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+    </div>
+</div>
+</div>
 
-<br>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#patient_table').dataTable( {
+       // "bPaginate": false,
+        "bLengthChange": false,  //
+ // search menu      "bFilter": false,
+        "ordering": false,
+        "info": false,
+        "initComplete" : function() {
+          var pages = $("#patient_table_wrapper")[0].children[2].children[1].children[0];
+          var jpage = $(pages);
+          jpage.addClass("page_view");
+          // var prev = $("#patient_table_wrapper")[0].children[2].children[0];
+          // var jprev = $(prev);
+          // var next = $("#patient_table_wrapper")[0].children[2].children[2];
+          // var jnext = $(next);
+          var search = $("#patient_table_filter")[0].children[0].children[0];
+          var jsearch = $(search);
+          var label = $("#patient_table_filter")[0].children[0]
+          var jlabel = $(label);
+          jpage.css({"color":"white"})
+          $("#patient_table_paginate").css({"float": "right","margin-top":"10px" });
+          // jprev.css({"color":"white !important"});
+          // jnext.css({"color":"white !important"});
+          jlabel.css({"color":"white","margin-bottom":"20px","margin-left": "390px"});
+          jsearch.css({"border-radius":"10px", "border":"none","color":"black","margin-left": "10px"});
+        }
+    });
+  } );
 
-<%= link_to 'New Personal health record', new_personal_health_record_path %>
+</script>

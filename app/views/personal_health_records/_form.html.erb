@@ -10,29 +10,77 @@
       </ul>
     </div>
   <% end %>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">allergies
+    </div>
+  </div>
 
-  <div class="actions">
-      <div> Allergies
-      <%= f.text_field(:allergies) %> 
-    </div>
-    <div> BloodType
-      <%= f.text_field(:blood_type) %>
-    </div>
-    <div> Chronic Disease
-      <%= f.text_field(:chronic_disease) %>
-    </div>
-    <div> Medication
-      <%= f.text_field(:medication) %>
-    </div>
-    <div> Organ_donor
-      <%= f.check_box :organ_donor %>
-    </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;" > <%= f.text_field(:allergies, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %> </div>
+  </div>
+</div>
 
-    <div> Patient
-      <% options = options_from_collection_for_select(@patients, 'id', 'last_name') %>
-      <%= f.select :patient_id, options %>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">blood type
     </div>
+  </div>
 
-    <%= f.submit %>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:blood_type, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">chronic illnesses
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:chronic_disease, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">medication
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:medication, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">organ donor?
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.check_box(:organ_donor, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+<% if @personal_health_record.personal_id.blank?%>
+<%= f.hidden_field(:patient_id, :value => @id) %>
+<% else %>
+<%= f.hidden_field(:patient_id, :value => @personal_health_record.personal_id) %>
+<% end %>
+<div class="row" style="margin-left: 160px;margin-top:25px"> <div><%= f.submit(:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px") %> </div> 
+<div> <%= link_to 'Back', patients_path, :style => "color:white;font-size: 14px;
+    line-height: 22px;"%> </div> 
   </div>
 <% end %>

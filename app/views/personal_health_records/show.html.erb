@@ -1,4 +1,97 @@
-<p id="notice"><%= notice %></p>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:750px;height: 360px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
+  <div style="margin-bottom: 30px;margin-bottom: 30px;FONT-SIZE: 32px;color: white;"> <%= @personal_health_record.patient.first_name %>'s Health Information</div>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">allergies
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_personal_health_record_path(@personal_health_record) %> |
-<%= link_to 'Back', personal_health_records_path %>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;" > <%= @personal_health_record.allergies %> 
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">blood type
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @personal_health_record.blood_type %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">chronic illnesses
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @personal_health_record.chronic_disease %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">medication
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @personal_health_record.medication %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">organ donor?
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @personal_health_record.organ_donor %></div>
+  </div>
+</div>
+
+  	  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	  	  <div class="row" style="margin-left: 165px;margin-top:25px"> 
+	  	  	<div>
+	  	  	  <%= link_to(edit_personal_health_record_path(@personal_health_record)) do %>
+	  	  		<div style ="border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px"> Edit </div>
+	  	  	  <% end %>
+			  <div> <%= link_to 'Back To Table', personal_health_records_path, :style => "color:white;font-size: 14px;
+	    line-height: 30px;float:left;margin-right:10px" %>
+			  </div> 
+			  <div> <%= link_to 'Delete', @personal_health_record, method: :delete, data: { confirm: 'Are you sure?' },:style => "color:white;font-size: 14px;
+	    line-height: 30px;float:left;margin-right:10px"  %>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+</div>
+</div>
+
+<!-- < link_to 'Edit', edit_patient_path(@patient) %> |
+< link_to 'Back', patients_path %> -->
+
+<!-- < link_to 'Edit', edit_personal_health_record_path(@personal_health_record) %>
+< link_to 'Back', personal_health_records_path %> -->

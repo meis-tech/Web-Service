@@ -14,6 +14,7 @@ class PersonalHealthRecordsController < ApplicationController
 
   # GET /personal_health_records/new
   def new
+    @id = params[:id]
     @personal_health_record = PersonalHealthRecord.new
     @patients = Patient.all
   end
@@ -63,15 +64,17 @@ class PersonalHealthRecordsController < ApplicationController
   end
 
   def give_health_record
-    if PersonalHealthRecord.where(:patient_id => params[:id]).length > 0
-      @PHR = PersonalHealthRecord.where(:patient_id  => params[:id]).first
+    # @personal_health_record = PersonalHealthRecord.where(:id => patient.personal_health_record.id);
+    if Patient.where(:personal_id => params[:id]).length > 0
+      patient = Patient.where(:personal_id => params[:id]).first
+      @PHR = PersonalHealthRecord.where(:patient_id  => patient.id).first
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personal_health_record
-      @personal_health_record = PersonalHealthRecord.find(params[:id])
+      @personal_health_record  = PersonalHealthRecord.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

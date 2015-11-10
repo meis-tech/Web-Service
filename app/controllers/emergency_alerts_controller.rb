@@ -62,9 +62,9 @@ class EmergencyAlertsController < ApplicationController
   end
 
   def create_alert_modaly
-      if PersonalHealthRecord.where(:patient_id => params[:id]).length > 0
-        puts params[:id]
-        @emergency_alert = EmergencyAlert.new(:patient_id => params[:id])
+      if Patient.where(:personal_id => params[:id]).length > 0
+        patient = Patient.where(:personal_id => params[:id]).first
+        @emergency_alert = EmergencyAlert.new(:patient_id => patient.id)
         @emergency_alert.save
       end
   end
