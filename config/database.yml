@@ -76,8 +76,10 @@ development:
 #
 production:
   adapter: postgresql
-  encoding: encode
-  database: meis_production
+  encoding: unicode
+  database: d6kkucefoctv26
   pool: 5
-  username: meis
-  password: <%= ENV['MEIS_DATABASE_PASSWORD'] %>
+  host:ec2-54-225-201-25.compute-1.amazonaws.com
+  url:postgres://qwllrbymqrpoxp:bX_1RVmigwg4kR0Lo19kkkzr4k@ec2-54-225-201-25.compute-1.amazonaws.com:5432/d6kkucefoctv26
+  username: qwllrbymqrpoxp
+  password: bX_1RVmigwg4kR0Lo19kkkzr4k
