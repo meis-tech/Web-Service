@@ -4,7 +4,11 @@
 <!--   	  <p id="notice" style="color:white;margin-left:200px">< notice %></p> -->
   	  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
   	  	<div style="height:250px;">
-  	  	  <%= image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
+  	  	  <% if !@patient.has_image?(@patient) %>
+  	  	    <%= cl_image_tag(@patient.image_name, :width => 250, :height => 250, :crop => :fill, :style => "height:250px;float:right;") %>
+  	  	  <% else %>
+			<%= image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
+		  <% end %>
   	  	</div>
   	  </div>
 

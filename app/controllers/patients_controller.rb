@@ -24,7 +24,14 @@ class PatientsController < ApplicationController
   # POST /patients
   # POST /patients.json
   def create
-    @patient = Patient.new(patient_params)
+    puts params
+    uploaded_io = params[:patient][:picture]
+    puts uploaded_io
+    @patient = Patient.new
+    Patient.upload_image(@patient, uploaded_io)
+    params[:patient].delete :picture
+    @patient.update(patient_params)
+
     id = @patient.Id_generate
     @patient.personal_id = id;
     respond_to do |format|
@@ -41,6 +48,12 @@ class PatientsController < ApplicationController
   # PATCH/PUT /patients/1
   # PATCH/PUT /patients/1.json
   def update
+    uploaded_io = params[:patient][:picture]
+    puts uploaded_io
+    Patient.upload_image(@patient, uploaded_io)
+    params[:patient].delete :picture
+
+
     respond_to do |format|
       if @patient.update(patient_params)
         format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
@@ -70,6 +83,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params[:patient].permit(:first_name, :last_name, :DOB, :sex, :email, :address, :phone_number)
+      params[:patient].permit(:first_name, :last_name, :DOB, :sex, :email, :address, :phone_number,:email_address, :picture)
     end
 end
