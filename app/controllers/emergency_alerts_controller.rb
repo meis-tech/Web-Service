@@ -62,9 +62,16 @@ class EmergencyAlertsController < ApplicationController
   end
 
   def create_alert_modaly
-      if Patient.where(:personal_id => params[:id]).length > 0
-        patient = Patient.where(:personal_id => params[:id]).first
-        @emergency_alert = EmergencyAlert.new(:patient_id => patient.id)
+    puts "YA BISH?"
+    puts params[:id]
+    value = params[:id]
+    array = value.split("?")
+    id = array[0]
+    notes = array[1]
+    condition = array[2]
+      if Patient.where(:personal_id => id).length > 0
+        patient = Patient.where(:personal_id => id).first
+        @emergency_alert = EmergencyAlert.new(:patient_id => patient.id, :condition => condition, :notes => notes, :active => true)
         @emergency_alert.save
       end
   end
@@ -77,6 +84,8 @@ class EmergencyAlertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def emergency_alert_params
-      params[:emergency_alert]
+      params[:emergency_alert].permit(:condition, :notes)
     end
 end
+
+# http://0.0.0.0:3000/emergency_alerts/create_alert_modaly?id=38355&notes=YABISH&condition=DICKTICKLER

@@ -23,8 +23,8 @@
           <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= ea.patient.personal_id %> </td>
         <% end %>
         <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" >  <%= ea.patient.sex %> </td>
-        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > notes ems here</td>
-        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-bottom-right-radius:10px"></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= ea.notes %></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-bottom-right-radius:10px"> <%= ea.condition %></td>
       </tr>
       <% end %>
     </tbody>

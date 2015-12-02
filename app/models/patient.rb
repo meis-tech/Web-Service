@@ -10,6 +10,7 @@ class Patient < ActiveRecord::Base
     	puts "lalalallalala:::::"
     	puts image.original_filename
     	response = Cloudinary::Uploader.upload("public/uploads/#{image.original_filename}")
+    	puts response
     	patient.image_name = response["public_id"]
     	patient.url = response["url"]
     	patient.secure_url = response["secure_url"]
