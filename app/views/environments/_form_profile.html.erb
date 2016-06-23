@@ -1,0 +1,165 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">first name
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;" > <%= f.text_field(:first_name, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %> </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">middle initial
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:last_name, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">last name
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:last_name, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">dob
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:DOB, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">gender
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.select(:sex, [["",""],['Female','Female'],['Male','Male']], {:style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;"}) %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">phone number
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:phone_number, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">emergency contanct
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:emergency_contact, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">address
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:address, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">email address
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:email_address, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">identifying image
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.file_field(:picture, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %> </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 80px;line-height: 23px;">Info
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_area(:text, :style => "border: none;border-radius: 7px;height: 75px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+    <%= f.hidden_field :attached, :value => true %>
+    <%= f.hidden_field :environment_id, :value => @environment.id %> 
+
+<div class="row" style="margin-left: 240px;margin-top:25px"> <div><%= f.submit(:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px") %> </div> 
+<div> <%= link_to 'Back', profiles_path, :style => "color:white;font-size: 14px;
+    line-height: 22px;"%> </div> </div>
+
+<% end %>

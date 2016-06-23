@@ -37,6 +37,12 @@ gem 'rails_12factor'
 gem 'carrierwave'
 gem 'cloudinary'
 
+# gem 'cancan'
+ gem 'devise'
+
+# for qrcode generator 
+ gem 'rqrcode'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,0 +1,31 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:750px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
+  <div style="margin-bottom: 30px; FONT-SIZE: 40px;color: white;margin-left: 50px;"> Admin: Find Users Table</div>
+  <table id="profile_table" style="width: 650px;border-radius:15px;border-radius:15px;background-color:white">
+    <thead>
+      <tr style="border-bottom:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> id </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> role </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> name </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> email</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> signin count</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;text-align: center;"> select</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr style="border-top:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= user.id%> </td>
+>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= user.role_id %> </td>
+
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= user.name %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.email %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.sign_in_count%></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.sign_in_count%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

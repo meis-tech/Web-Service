@@ -16,7 +16,7 @@ class PersonalHealthRecordsController < ApplicationController
   def new
     @id = params[:id]
     @personal_health_record = PersonalHealthRecord.new
-    @patients = Patient.all
+    @profile = Profile.all
   end
 
   # GET /personal_health_records/1/edit
@@ -65,8 +65,8 @@ class PersonalHealthRecordsController < ApplicationController
 
   def give_health_record
     # @personal_health_record = PersonalHealthRecord.where(:id => patient.personal_health_record.id);
-    if Patient.where(:personal_id => params[:id]).length > 0
-      patient = Patient.where(:personal_id => params[:id]).first
+    if Profile.where(:personal_id => params[:id]).length > 0
+      patient = Profile.where(:personal_id => params[:id]).first
       @PHR = PersonalHealthRecord.where(:patient_id  => patient.id).first
     end
   end

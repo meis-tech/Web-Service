@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <% if user_signed_in? %>
+    <p>Hello, <%= current_user.first_name %> - <%= link_to "Sign_out", destroy_user_session_path, :method => "delete" %>
+    <br>
+  <% end %>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+       
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div>
     <%= image_tag("LOGO2.png", :style => "width:810px;padding-top:40px;display: block;

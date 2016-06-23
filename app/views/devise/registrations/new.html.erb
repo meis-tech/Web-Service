@@ -1,0 +1,114 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+<!--   <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div> -->
+
+<!--   <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div> -->
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div id="grad" style="width:550px;height:615px;display: block;margin-left: auto;margin-right: auto;background-color: blue;border-radius: 15px;font-family:disco">
+
+        <div class= "row" style="padding-top:45px;padding-left:40px">
+<!--       < label_tag 'username:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}  %>
+      < text_field_tag 'query',nil, options = {class: "form-control", style: "width:275px"} %> -->
+
+      <div class="field">
+        <div style="font-size:35px;color:white"> Sign up to use Prysmic</div>
+      </div>
+    </div>
+
+
+    <div class= "row" style="padding-top:5px;padding-left:40px">
+<!--       < label_tag 'username:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}  %>
+      < text_field_tag 'query',nil, options = {class: "form-control", style: "width:275px"} %> -->
+
+      <div class="field">
+        <%= f.label :email, "Email:", style: "color:white;float:left;font-size:34px;padding-top:26px;margin-right:10px;margin-left:93px" %> <br/>
+        <%= f.email_field :email, autofocus: true, :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+    <div class= "row" style="padding-left:40px;">
+<!--       < label_tag 'password:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}   %>
+      < text_field_tag 'query',nil , options = {class: "form-control", style: "width:275px"} %> -->
+      <div class="field">
+        <%= f.label :password, "Password:", style: "color:white;float:left;font-size:34px;padding-top:26px;margin-right:10px;" %><br />
+        <%= f.password_field :password, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+    <div class= "row" style="padding-left:40px;margin-left:24px">
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirm:", style: "color:white;float:left;font-size:34px;padding-top:26px;margin-right:10px;" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+
+      <div class= "row" style="padding-left:40px;margin-top:40px">
+<!--       < label_tag 'password:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}   %>
+      < text_field_tag 'query',nil , options = {class: "form-control", style: "width:275px"} %> -->
+      <div class="field">
+        <%= f.label :first_name, "First Name:", style: "color:white;float:left;font-size:31px;padding-top:26px;margin-right:10px;margin-left:0px;" %><br />
+        <%= f.text_field :first_name, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+
+          <div class= "row" style="padding-left:40px;">
+<!--       < label_tag 'password:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}   %>
+      < text_field_tag 'query',nil , options = {class: "form-control", style: "width:275px"} %> -->
+      <div class="field">
+        <%= f.label :middle_initial, "Middle Initial:", style: "color:white;float:left;font-size:27px;padding-top:26px;margin-right:10px;margin-left:0px;" %><br />
+        <%= f.text_field :middle_initial, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+
+          <div class= "row" style="padding-left:40px;">
+<!--       < label_tag 'password:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}   %>
+      < text_field_tag 'query',nil , options = {class: "form-control", style: "width:275px"} %> -->
+      <div class="field">
+        <%= f.label :last_name, "Last Name:", style: "color:white;float:left;font-size:31px;padding-top:26px;margin-right:10px;margin-left:0px;" %><br />
+        <%= f.text_field :last_name, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+
+
+    <div class= "row" style="padding-left:40px;">
+<!--       < label_tag 'password:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}   %>
+      < text_field_tag 'query',nil , options = {class: "form-control", style: "width:275px"} %> -->
+      <div class="field">
+        <%= f.label :contact_number, "Number:", style: "color:white;float:left;font-size:34px;padding-top:26px;margin-right:10px;margin-left:41px" %><br />
+        <%= f.text_field :contact_number, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+
+    <div>
+      <div class= "row"> 
+<!--         <button type="submit" style="margin-left:450px;margin-top:15px" class="btn btn-default">Submit</button> -->
+        <div class="actions">
+          <div style="margin-left:50px;float:left;width:200px">
+            <%= render "devise/shared/links" %>
+          </div>
+          <%= f.hidden_field :role_id, :value => 3 %>
+          <%= f.submit "Sign up", style: "margin-right:50px;margin-top:5px;float:right", :class => "btn btn-default" %>
+        </div>
+      </div>
+    <div>
+  </div>
+</div>
+<% end %>

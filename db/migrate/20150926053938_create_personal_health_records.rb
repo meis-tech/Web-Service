@@ -1,7 +1,7 @@
 class CreatePersonalHealthRecords < ActiveRecord::Migration
   def change
     create_table :personal_health_records do |t|
-      t.belongs_to :patient, index:true
+      t.belongs_to :profile, index:true
       t.boolean :active
       t.text :allergies
       t.string :blood_type

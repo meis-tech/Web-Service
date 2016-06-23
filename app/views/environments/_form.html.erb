@@ -1,0 +1,108 @@
+<%= form_for(@environment) do |f| %>
+  <% if @environment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@environment.errors.count, "error") %> prohibited this environment from being saved:</h2>
+      <ul>
+      <% @environment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">Organization
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;" > <%= f.text_field(:company, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %> </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">Main Contact Name
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:main_contact_name, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;"> Phone Number
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:main_contact_number, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">Address
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:address, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">Type
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.select(:type_of_entity, [["Construction","Construction"]], {:style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;"}) %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">Description
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:description, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">Minors?
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.check_box(:minors?, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+
+
+<div class="row" style="margin-left: 240px;margin-top:25px"> <div><%= f.submit(:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px") %> </div> 
+<div> <%= link_to 'Back', environments_path, :style => "color:white;font-size: 14px;
+    line-height: 22px;"%> </div> </div>
+<% end %>

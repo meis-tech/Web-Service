@@ -1,0 +1,116 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:750px;height: 360px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
+  <div style="margin-bottom: 30px;margin-bottom: 30px;FONT-SIZE: 32px;color: white;"> <%= @environment.company%>'s Network Information</div>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">organization
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;" > <%= @environment.company%> 
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">main contact
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @environment.main_contact_name %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">contact number
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @environment.main_contact_number%></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">address
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @environment.address %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">type
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;color: white;
+    font-size: 22px;
+    line-height: 24px;"> <%= @environment.type_of_entity %></div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:850px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;margin-top:50px">
+  <div style="margin-bottom: 30px;margin-bottom: 30px;FONT-SIZE: 32px;color: white;"> <%= @environment.company%>'s Users</div>
+  <table id="profile_table" style="width: 650px;border-radius:15px;border-radius:15px;background-color:white">
+    <thead>
+      <tr style="border-bottom:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> name </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> number</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> emergency contact </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> generated?</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> text</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;text-align: center;"> select</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr style="border-top:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= user.first_name + " " + user.last_name %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= user.phone_number%> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.emergency_contact %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.attached%></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.text %></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= link_to "show", profile_path(user) %> <%= link_to "qr",profiles_generate_qr_path(user.id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+      <div style="border-radius:15px;background-color:white;height: 35px;width: 180px;line-height: 32px;margin-top:39px;margin-left:43px;">
+        <%= link_to(generate_path(@environment)) do %>
+          <div style="font-size:17px;height: 35px; margin-left: 6px;"> Generate Profile
+          </div>
+         <% end %>
+      </div>
+</div>
+
+<%= link_to 'Edit', edit_environment_path(@environment) %>
+<%= link_to 'Back', environments_path %>

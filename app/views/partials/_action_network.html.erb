@@ -1,0 +1,5 @@
+<% if environment.id == current_user.profile.environment_id %>
+	<div style="float:left">Joined</div>
+<% else %>
+	<div style="float:left"> <%= link_to 'Join', join_path(environment.id), :remote => true %></div>
+<% end %>

@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :requests
+
+  resources :environments 
+  get '/join/:id', to: 'environments#join', as: 'join'
+  get '/new/:id', to: 'environments#new_profile', as: 'generate'
+  post '/create/:id', to: 'environments#create_profile'
+
+
+  devise_for :users, controllers: {registrations: "registrations"}
   resources :emergency_alerts do
     collection do 
       get 'create_alert_modaly'
@@ -18,8 +27,16 @@ Rails.application.routes.draw do
     end
   end
 
+    get 'user_landing', :as => "welcome/user", :to => "welcome#user_landing"
+    get 'get_network', :as => "welcome/get_network", :to => "welcome#get_network"
 
-  resources :patients
+    get 'admin_landing', :as => "admin/landing", :to => "admin#landing"
+    get 'admin_users', :as => "admin/users", :to => "admin#users"
+
+
+  resources :profiles
+    get 'profiles/give_profile_info/:id', :as => "profiles/give_profile_info", :to => 'profiles#give_profile_info'
+    get 'profiles/generate_qr/:id', :as => "profiles/generate_qr", :to => 'profiles#generate_qr'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

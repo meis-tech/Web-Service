@@ -1,0 +1,51 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div id="grad" style="width:650px;height:500px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding-top: 50px;padding-bottom: 50px;">
+  	  <div style="margin-bottom: 30px;margin-bottom: 60px;FONT-SIZE: 38px;color: white;padding-left: 95px;padding-right: 95px;"> Profile Information</div>
+<!--   	  <p id="notice" style="color:white;margin-left:200px">< notice %></p> -->
+  	  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+  	  	<div style="height:250px;">
+  	  	  <% if !@profile.has_image?(@profile) %>
+  	  	    <%= cl_image_tag(@profile.image_name, :width => 250, :height => 250, :crop => :fill, :style => "height:250px;float:right;") %>
+  	  	  <% else %>
+			<%= image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
+		  <% end %>
+  	  	</div>
+  	  </div>
+
+  	  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+  	  	<div class="row" style="height: 24px;font-size: 21px;color:white"><%= @profile.first_name %></div>
+  	  	<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%= @profile.last_name %></div>
+		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%= @profile.DOB %></div>
+		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%= @profile.sex %></div>
+		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%= @profile.phone_number %></div>
+		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%= @profile.address %></div>
+		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%=  %></div>
+  	  </div>
+
+  	  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 20px;">
+	  	  <div class="row" style="margin-left: 120px;margin-top:25px"> 
+	  	  	<div>
+	  	  		<% if current_user.environment_admin? %>
+	  	  	   <div> <%= link_to 'Back', environment_path(@profile.environment_id), :style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px" %>
+			  </div> 
+			  <% else %>
+			  	<div> <%= link_to 'Back', welcome_user_path, :style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px" %>
+			  <% end %>
+	  	  	  <%= link_to(edit_profile_path(@profile)) do %>
+	  	  		<div style ="color:white;font-size: 14px;line-height: 30px;float:left;margin-right:10px"> Edit </div>
+	  	  	  <% end %>
+			  <div> <%= link_to 'Delete', @profile, method: :delete, data: { confirm: 'Are you sure?' },:style => "color:white;font-size: 14px;
+	    line-height: 30px;float:left;margin-right:10px"  %>
+			  </div>
+			  <div> <%= link_to 'Download Qr', profiles_generate_qr_path(@profile.id), :style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px" %>
+			  </div> 		  
+			</div>
+		  </div>
+	  </div>
+  </div>
+</div>
+
+<div style="float:left"> <%= link_to 'Qr', profiles_generate_qr_path(@profile.id), :remote => true %></div>
+
+<!-- < link_to 'Edit', edit_patient_path(@patient) %> |
+< link_to 'Back', patients_path %> -->

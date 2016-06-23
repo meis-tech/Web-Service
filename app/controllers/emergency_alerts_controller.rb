@@ -69,9 +69,9 @@ class EmergencyAlertsController < ApplicationController
     id = array[0]
     notes = array[1]
     condition = array[2]
-      if Patient.where(:personal_id => id).length > 0
-        patient = Patient.where(:personal_id => id).first
-        @emergency_alert = EmergencyAlert.new(:patient_id => patient.id, :condition => condition, :notes => notes, :active => true)
+      if Profile.where(:personal_id => id).length > 0
+        profile = Profile.where(:personal_id => id).first
+        @emergency_alert = EmergencyAlert.new(:patient_id => profile.id, :condition => condition, :notes => notes, :active => true)
         @emergency_alert.save
       end
   end

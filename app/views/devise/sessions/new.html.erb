@@ -1,0 +1,37 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div id="grad" style="width:550px;height:300px;display: block;margin-left: auto;margin-right: auto;background-color: blue;border-radius: 15px;font-family:disco">
+    <div class= "row" style="padding-top:45px;padding-left:40px">
+<!--       < label_tag 'username:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}  %>
+      < text_field_tag 'query',nil, options = {class: "form-control", style: "width:275px"} %> -->
+
+      <div class="field">
+        <%= f.label :email, "Email:", style: "color:white;float:left;font-size:34px;padding-top:26px;margin-right:10px;margin-left:93px" %> <br/>
+        <%= f.email_field :email, autofocus: true, :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+    <div class= "row" style="padding-top:25px;padding-left:40px">
+<!--       < label_tag 'password:', nil, options = { style: "color:white;float:left;font-size:34px;padding-top:7px;margin-right:10px;"}   %>
+      < text_field_tag 'query',nil , options = {class: "form-control", style: "width:275px"} %> -->
+      <div class="field">
+        <%= f.label :password, "Password:", style: "color:white;float:left;font-size:34px;padding-top:26px;margin-right:10px;" %><br />
+        <%= f.password_field :password, autocomplete: "off", :class => "form-control", style: "width:275px" %>
+      </div>
+    </div>
+
+    <div>
+      <div class= "row"> 
+<!--         <button type="submit" style="margin-left:450px;margin-top:15px" class="btn btn-default">Submit</button> -->
+
+        <div class="actions">
+          <div style="margin-left:50px;float:left;width:200px">
+            <%= render "devise/shared/links" %>
+          </div>
+          <%= f.submit "Log in", style: "margin-right:50px;margin-top:5px;float:right", :class => "btn btn-default" %>
+        </div>
+      </div>
+    <div>
+  </div>
+</div>
+<% end %>
