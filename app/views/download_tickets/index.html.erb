@@ -1,0 +1,41 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div id="grad" style="width:750px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
+  <div style="margin-bottom: 30px; FONT-SIZE: 40px;color: white;margin-left: 50px;"> View Download Tickets</div>
+  <table id="profile_table" style="width: 650px;border-radius:15px;border-radius:15px;background-color:white">
+    <thead>
+      <tr style="border-bottom:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> id </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> means</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> profile </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> file</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> expires</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;border-right: 1px solid gray;text-align: center;"> opened?</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 20px;text-align: center;"> select</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @download_tickets.each do |ticket| %>
+      <tr style="border-top:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= ticket.id %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= ticket.transfer_means %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;" > <%= Profile.where(:id => ticket.profile_id).first.first_name %>  </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;" > <%= HostedFile.where(:id => ticket.hosted_file_id).first.name %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= ticket.time_expired%> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= ticket.page_visited %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%=%> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div style="margin-bottom: 20px;">
+    <div>
+      <div>
+      <%= link_to(docter_welcome_index_path()) do %>
+        <div>
+          <button type="submit" style="margin-top:15px;border-radius: 10px;color: #3A5CAC;float: left;margin-right: 15px;" class="btn btn-default">back</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

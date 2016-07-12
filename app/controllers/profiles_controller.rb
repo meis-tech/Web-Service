@@ -24,14 +24,7 @@ class ProfilesController < ApplicationController
   # POST /patients
   # POST /patients.json
   def create
-    puts params
-    uploaded_io = params[:profile][:picture]
-    puts uploaded_io
-    @profile = Profile.new
-    if uploaded_io != nil
-      Profile.upload_image(@profile, uploaded_io)
-      params[:profile].delete :picture
-    end
+    @profile = Profile.new(profile_params)
     @profile.update(profile_params)
     # @profile.attached? = params[:profile][:attached]
     @profile.user_id = current_user.id
@@ -49,14 +42,6 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /patients/1
   # PATCH/PUT /patients/1.json
   def update
-    if params[:profile][:picture] != nil
-      uploaded_io = params[:profile][:picture]
-      puts uploaded_io
-      Profile.upload_image(@profile, uploaded_io)
-      params[:profile].delete :picture
-    end
-
-
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -109,6 +94,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params[:profile].permit(:first_name, :last_name, :middle_initial, :DOB, :sex, :email, :address, :phone_number, :emergency_contact, :email_address, :picture, :text, :environment_id, :attached)
+      params[:profile].permit(:first_name, :last_name, :middle_initial, :DOB, :sex, :email, :address, :phone_number, :emergency_contact, :email_address, :text, :environment_id, :attached)
     end
 end

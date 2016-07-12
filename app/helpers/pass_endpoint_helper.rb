@@ -1,0 +1,2 @@
+module PassEndpointHelper
+end

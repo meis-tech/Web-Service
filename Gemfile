@@ -27,7 +27,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Bootstrap Gems
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.0.2.0'
+
 gem 'autoprefixer-rails'
 
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
@@ -35,13 +36,13 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 gem 'rails_12factor'
 
 gem 'carrierwave'
-gem 'cloudinary'
 
 # gem 'cancan'
  gem 'devise'
 
 # for qrcode generator 
  gem 'rqrcode'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

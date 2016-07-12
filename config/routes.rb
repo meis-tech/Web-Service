@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :download_tickets
+  get "get_files", to: 'download_tickets#get_hosted_files'
+  get "expired_download", to: 'download_tickets#expired_download'
+
+  resources :hosted_files
+
   resources :requests
 
   resources :environments 
@@ -15,9 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :personal_health_records do
-    collection do
-      get 'give_health_record'
-    end
   end
 
   resources :welcome do 
@@ -30,6 +33,9 @@ Rails.application.routes.draw do
     get 'user_landing', :as => "welcome/user", :to => "welcome#user_landing"
     get 'get_network', :as => "welcome/get_network", :to => "welcome#get_network"
 
+    get 'more_info', :as => "welcome/info", :to => "welcome#info"
+    get 'contact', :as => "welcome/contact", :to => "welcome#contact"
+
     get 'admin_landing', :as => "admin/landing", :to => "admin#landing"
     get 'admin_users', :as => "admin/users", :to => "admin#users"
 
@@ -38,6 +44,18 @@ Rails.application.routes.draw do
     get 'profiles/give_profile_info/:id', :as => "profiles/give_profile_info", :to => 'profiles#give_profile_info'
     get 'profiles/generate_qr/:id', :as => "profiles/generate_qr", :to => 'profiles#generate_qr'
 
+
+## IPASS ANS Endpoints
+  post  'v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#register"
+  delete  'v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#unregister"
+  get '/v1/devices/:device_id/registrations/:passtype_id', :to => "pass_endpoint#ask_for_serials"
+  get 'v1/passes/:passtype_id/:serial_number', :to => "pass_endpoint#get_new_pass"
+
+  get 'pkpass.pass', :to => "pass_endpoint#pkpass"
+
+  get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email"
+  get 'api/get_record/:id', :to => "api#get_profile_info"
+  get 'api/get_all_records', :to => "api#get_all_records"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

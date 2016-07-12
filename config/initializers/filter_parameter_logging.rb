@@ -2,3 +2,4 @@
 
 # Configure sensitive parameters which will be filtered from the log file.
 Rails.application.config.filter_parameters += [:password]
+Rails.application.config.ipass_auth_key = '123Danishere123' 

@@ -12,8 +12,6 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :emergency_contact
       t.text :text
       t.string :url
-      t.string :secure_url
-      t.string :image_name
       t.boolean :attached
       t.belongs_to :environment, index:true
       t.belongs_to :user, index:true

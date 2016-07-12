@@ -11,5 +11,8 @@
   Role.find_or_create_by({name: role})
 end
 
+user = User.create! :first_name => 'Dan', :role_id => 1, :email => 'chudydaniel1@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
+
+user2 = User.create! :first_name => 'Dan', :role_id => 3, :email => 'chudydaniel2@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
 ## Environments ##
 ##Environment.create(company: "Test Co", main_contact_name: "Dan Chudy", main_contact_number: "203-981-0422", type_of_entity: "Construction", address: "313 harper lane", description: "we love to ahve a dandy time", minors?: false)

@@ -3,6 +3,8 @@ class Profile < ActiveRecord::Base
 
 	has_many :personal_health_records
 	has_many :emergency_alerts
+	has_many :download_tickets
+	has_many :profile_passes
 	belongs_to :environment
 	belongs_to :user
 
@@ -22,7 +24,7 @@ class Profile < ActiveRecord::Base
 	end
 
 	def has_image?(profile)
-		return profile.image_name.blank?
+		return true
 	end
 
 	def record?

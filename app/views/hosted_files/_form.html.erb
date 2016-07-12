@@ -1,0 +1,94 @@
+<%= form_for(@hosted_file) do |f| %>
+  <% if @hosted_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hosted_file.errors.count, "error") %> prohibited this hosted_file from being saved:</h2>
+
+      <ul>
+      <% @hosted_file.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">name
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;" > <%= f.text_field(:name, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %> </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">version
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:version, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;"> phone type
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.select(:phone_type, options_for_select(["IOS", "Andriod", "Windows", "Other"]), :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">description
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:description, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">shown?
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.check_box(:shown, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+   <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">file
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.file_field(:file_path, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-left: 240px;margin-top:25px"> <div><%= f.submit(:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px") %> </div> 
+<div> <%= link_to 'Back', hosted_files_path, :style => "color:white;font-size: 14px;
+    line-height: 22px;"%> </div> </div>
+<% end %>

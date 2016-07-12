@@ -21,16 +21,35 @@ class WelcomeController < ApplicationController
   end
 
   def admin
+    :authenticate_user!
     puts "::::::::::::::: ADMIN :::::::::::::::::::"
   end
 
   def user_landing
+    :authenticate_user!
   end
 
   def get_network
+    :authenticate_user!
     @environments = Environment.all
   end
 
   def docter
   end
+
+   def contact
+  respond_to do |format|
+        format.html # show.html.erb
+        format.js # show.js.erb
+        format.json
+    end
+ end
+
+ def info
+    respond_to do |format|
+        format.html # show.html.erb
+        format.js # show.js.erb
+        format.json
+    end
+ end
 end

@@ -1,0 +1,88 @@
+<%= form_for(@download_ticket) do |f| %>
+  <% if @download_ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@download_ticket.errors.count, "error") %> prohibited this download_ticket from being saved:</h2>
+
+      <ul>
+      <% @download_ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% if !current_user.super_admin? %>
+  <% profile = current_user.profile %>
+<% end %>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div style= "color: black;font-size: 19px;line-height: 23px;"> The final step in the proccess is for prysmic to get an app snippet on your phone. All Prysmic apps are certified and safe to download, just choose the most appropriate means of getting the app on your phone and well move from there.
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: black;font-size: 19px;
+    height: 30px;line-height: 23px;"> How do you want it?
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.select(:transfer_means, options_for_select(["Phone Number", "Email"]), {} , :onchange => "myFunction(this)") %></div>
+  </div>
+</div>
+
+      <div id="phone_snippet" style="display:block">
+        <div class="row" style="margin-top: 8px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div style= "color: black;font-size: 19px;line-height: 23px;"> Your number is: <%= profile.phone_number %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 8px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div style= "color: black;font-size: 19px;line-height: 23px;display:"> phone heres what u do now
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="email_snippet" style="display:none">
+        <div class="row" style="margin-top: 8px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div style= "color: black;font-size: 19px;line-height: 23px;"> Your email is: <%= profile.email_address %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 8px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div style= "color: black;font-size: 19px;line-height: 23px;display:"> email heres what u do now
+            </div>
+          </div>
+        </div>
+      </div>
+<%= f.hidden_field :profile_id, :value => profile.id %>
+<%= f.hidden_field :hosted_file_id, :value => @file_id %>
+
+  <div class="actions">
+    <%= f.submit "Request Download" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  console.log("we are running");
+  function myFunction() {
+    console.log("we were called");
+    if ($("#phone_snippet").css("display") == "block") {
+      $("#phone_snippet").css("display","none");
+      $("#email_snippet").css("display","block");
+    } else {
+      $("#email_snippet").css("display","none");
+      $("#phone_snippet").css("display","block");
+    }
+  }
+</script>
