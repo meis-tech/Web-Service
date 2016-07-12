@@ -36,9 +36,13 @@ Rails.application.routes.draw do
     get 'more_info', :as => "welcome/info", :to => "welcome#info"
     get 'contact', :as => "welcome/contact", :to => "welcome#contact"
 
+    ## ADMIN LINKS ##
     get 'admin_landing', :as => "admin/landing", :to => "admin#landing"
     get 'admin_users', :as => "admin/users", :to => "admin#users"
 
+    get 'admin/view_registrations', :as => "admin/view_registrations", :to => "admin#view_registrations"
+    get 'admin/view_devices', :as => "admin/view_devices", :to => "admin#view_devices"
+    get 'admin/view_profile_passes', :as => "admin/view_profile_passes", :to => "admin#view_profile_passes"
 
   resources :profiles
     get 'profiles/give_profile_info/:id', :as => "profiles/give_profile_info", :to => 'profiles#give_profile_info'
@@ -53,6 +57,7 @@ Rails.application.routes.draw do
 
   get 'pkpass.pass', :to => "pass_endpoint#pkpass"
 
+## IPAD Endpoints
   get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email"
   get 'api/get_record/:id', :to => "api#get_profile_info"
   get 'api/get_all_records', :to => "api#get_all_records"

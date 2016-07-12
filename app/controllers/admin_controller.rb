@@ -8,4 +8,16 @@ class AdminController < ApplicationController
  	puts "GO TO USERS ::::::::::::::::::::::::::::::::::::::"
  	@users = User.all
  end
+
+ def view_registrations
+ 	@registrations = Registration.all
+ end
+
+ def view_devices
+ 	@devices = Device.all
+ end
+
+ def view_profile_passes
+ 	@passes = ProfilePass.all
+ end
 end

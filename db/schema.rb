@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20160711220406) do
 
   create_table "profile_passes", force: true do |t|
     t.string   "serial_no"
-    t.integer  "profile_id_id"
+    t.integer  "profile_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_initial"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160711220406) do
     t.datetime "updated_at"
   end
 
-  add_index "profile_passes", ["profile_id_id"], name: "index_profile_passes_on_profile_id_id", using: :btree
+  add_index "profile_passes", ["profile_id"], name: "index_profile_passes_on_profile_id", using: :btree
 
   create_table "profiles", force: true do |t|
     t.string   "first_name"

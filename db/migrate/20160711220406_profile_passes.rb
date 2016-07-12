@@ -2,7 +2,7 @@ class ProfilePasses < ActiveRecord::Migration
   def change
   	  create_table :profile_passes do |t|
   	  	  t.string :serial_no
-  	  	  t.belongs_to :profile_id, index:true
+  	  	  t.belongs_to :profile, index:true
 	  	  t.string :first_name
 	      t.string :last_name
 	      t.string :middle_initial
