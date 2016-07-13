@@ -16,16 +16,33 @@
       <% @users.each do |user| %>
       <tr style="border-top:1px solid gray">
         <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= user.id%> </td>
->
         <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= user.role_id %> </td>
-
         <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= user.first_name %> </td>
         <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.email %> </td>
         <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.sign_in_count%></td>
-        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= user.sign_in_count%></td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > 
+          <% profile_id = nil %>
+          <% if Profile.where(:user_id => user.id).first != nil %>
+            <% profile_id = Profile.where(:user_id => user.id).first.id %>
+            <%= "profile" %>
+          <% end %>
+          <% if ProfilePass.where(:profile_id => profile_id).first != nil%>
+            <%= "pass" %>
+          <% end %>         
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+    <div style="margin-bottom: 20px;">
+      <div>
+      <%= link_to(admin_landing_path()) do %>
+        <div>
+          <button type="submit" style="margin-top:15px;border-radius: 10px;color: #3A5CAC;float: left;margin-right: 15px;" class="btn btn-default">back</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
 </div>
 </div>

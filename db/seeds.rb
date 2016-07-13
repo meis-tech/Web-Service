@@ -14,5 +14,11 @@ end
 user = User.create! :first_name => 'Dan', :role_id => 1, :email => 'chudydaniel1@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
 
 user2 = User.create! :first_name => 'Dan', :role_id => 3, :email => 'chudydaniel2@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
+
+user3 = User.create! :first_name => 'Bill', :role_id => 3, :email => 'Bill@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
+
+user4 = User.create! :first_name => 'Jane', :role_id => 3, :email => 'Jane@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
+
+user5 = User.create! :first_name => 'Liza', :role_id => 3, :email => 'Liza@gmail.com', :password => 'prysmictest', :password_confirmation => 'prysmictest'
 ## Environments ##
 ##Environment.create(company: "Test Co", main_contact_name: "Dan Chudy", main_contact_number: "203-981-0422", type_of_entity: "Construction", address: "313 harper lane", description: "we love to ahve a dandy time", minors?: false)
