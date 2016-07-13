@@ -27,6 +27,10 @@ class Profile < ActiveRecord::Base
 		return true
 	end
 
+	def image
+		send_file("public/uploads/images/1")
+	end
+
 	def record?
 		back = false;
 		if (PersonalHealthRecord.where(:profile_id => self.id).length > 0)

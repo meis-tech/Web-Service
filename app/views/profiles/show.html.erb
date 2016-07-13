@@ -4,8 +4,8 @@
 <!--   	  <p id="notice" style="color:white;margin-left:200px">< notice %></p> -->
   	  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
   	  	<div style="height:250px;">
-  	  	  <% if !@profile.has_image?(@profile) %>
-  	  	    <%= cl_image_tag(@profile.image_name, :width => 250, :height => 250, :crop => :fill, :style => "height:250px;float:right;") %>
+  	  	  <% if @profile.has_image?(@profile) %>
+  	  	    <%= image_tag("#{@profile.id}.png", :style => "width:250px;height:250px;float:right;") %>
   	  	  <% else %>
 			<%= image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
 		  <% end %>
@@ -34,18 +34,23 @@
 	  	  	  <%= link_to(edit_profile_path(@profile)) do %>
 	  	  		<div style ="color:white;font-size: 14px;line-height: 30px;float:left;margin-right:10px"> Edit </div>
 	  	  	  <% end %>
-			  <div> <%= link_to 'Delete', @profile, method: :delete, data: { confirm: 'Are you sure?' },:style => "color:white;font-size: 14px;
-	    line-height: 30px;float:left;margin-right:10px"  %>
+			  <div> <%= link_to 'Delete', @profile, method: :delete, data: { confirm: 'Are you sure?' },:style => "color:white;font-size: 14px;line-height: 30px;float:left;margin-right:10px"  %>
 			  </div>
-			  <div> <%= link_to 'Download Qr', profiles_generate_qr_path(@profile.id), :style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px" %>
-			  </div> 		  
+<!-- 	DISABLED MODALE		  <div> < link_to 'Download Qr', profiles_generate_qr_path(@profile.id), :style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px" %>
+			  </div>  -->
+<% if PersonalHealthRecord.where(:profile_id => @profile.id).first == nil%>
+			  <div> <%= link_to 'Add Info', new_personal_health_record_path(:id => @profile.id),:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px"  %>
+			  </div>
+<% else %>
+			  <div> <%= link_to 'See info', personal_health_record_path(PersonalHealthRecord.where(:profile_id => @profile.id).first.id),:style => "color:white;font-size: 14px;
+	    line-height: 30px;float:left;margin-right:10px"  %>
+			  </div>	
+<% end %>
 			</div>
 		  </div>
 	  </div>
   </div>
 </div>
-
-<div style="float:left"> <%= link_to 'Qr', profiles_generate_qr_path(@profile.id), :remote => true %></div>
 
 <!-- < link_to 'Edit', edit_patient_path(@patient) %> |
 < link_to 'Back', patients_path %> -->

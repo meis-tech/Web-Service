@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email"
   get 'api/get_record/:id', :to => "api#get_profile_info"
   get 'api/get_all_records', :to => "api#get_all_records"
+  get 'api/send_picture/:id', :to => "api#send_picture"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

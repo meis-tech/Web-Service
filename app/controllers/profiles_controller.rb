@@ -26,7 +26,14 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.update(profile_params)
-    # @profile.attached? = params[:profile][:attached]
+
+    picture = params[:profile][:picture]
+    puts picture
+    puts "ASDASDASDASDASDADADASAS"
+    directory = "app/assets/images"
+    path = File.join(directory, name)
+    File.open(path, "wb") { |f| f.write(picture.read) }
+
     @profile.user_id = current_user.id
     respond_to do |format|
       if @profile.save
@@ -42,6 +49,18 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /patients/1
   # PATCH/PUT /patients/1.json
   def update
+
+    #File.delete("app/assets/images/#{@profile.id}.png")
+    picture = params[:profile][:picture]
+    if picture != nil
+      puts picture
+      puts "ASDASDASDASDASDADADASAS"
+      directory = "app/assets/images"
+      path = File.join(directory, @profile.id.to_s + ".png")
+      File.open(path, "wb") { |f| f.write(picture.read) }
+    end
+
+
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -67,6 +86,7 @@ class ProfilesController < ApplicationController
     end
   end
 
+##### OBSOLETE ######
   def give_profile_info
     # @personal_health_record = PersonalHealthRecord.where(:id => patient.personal_health_record.id);
     if Profile.where(:id => params[:id]).length > 0
@@ -74,6 +94,7 @@ class ProfilesController < ApplicationController
     end
     render json: @profile
   end
+  ###################
 
   def generate_qr
     require 'chunky_png'

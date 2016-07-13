@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 <div id="grad" style="width:750px;height: 360px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding: 50px;">
-  <div style="margin-bottom: 30px;margin-bottom: 30px;FONT-SIZE: 32px;color: white;"> <%= @personal_health_record.patient.first_name %>'s Health Information</div>
+  <div style="margin-bottom: 30px;margin-bottom: 30px;FONT-SIZE: 32px;color: white;"> <%= Profile.where(:id => @personal_health_record.profile_id).first.first_name %>'s Health Information</div>
 <div class="row" style="margin-top: 8px;">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div style= "text-align: right;color: white;font-size: 23px;
@@ -78,7 +78,7 @@
 	  	  	  <%= link_to(edit_personal_health_record_path(@personal_health_record)) do %>
 	  	  		<div style ="border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;padding:5px"> Edit </div>
 	  	  	  <% end %>
-			  <div> <%= link_to 'Back To Table', personal_health_records_path, :style => "color:white;font-size: 14px;
+			  <div> <%= link_to 'Back User', profile_path(@personal_health_record.profile_id), :style => "color:white;font-size: 14px;
 	    line-height: 30px;float:left;margin-right:10px" %>
 			  </div> 
 			  <div> <%= link_to 'Delete', @personal_health_record, method: :delete, data: { confirm: 'Are you sure?' },:style => "color:white;font-size: 14px;

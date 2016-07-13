@@ -1,7 +1,7 @@
 <%= form_for(@personal_health_record) do |f| %>
   <% if @personal_health_record.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@personal_health_record.errors.count, "error") %> prohibited this personal_health_record from being saved:</h2>
+      <h2><%= pluralize(@personal_health_record.errors.count, "error") %> prohibited this personal_health_record from being saved: </h2>
 
       <ul>
       <% @personal_health_record.errors.full_messages.each do |message| %>
@@ -74,13 +74,11 @@
     width: 265px;") %></div>
   </div>
 </div>
-<% if @personal_health_record.personal_id.blank?%>
-<%= f.hidden_field(:patient_id, :value => @id) %>
-<% else %>
-<%= f.hidden_field(:patient_id, :value => @personal_health_record.personal_id) %>
-<% end %>
+
+<%= f.hidden_field :profile_id, :value => @profile.id %>
+
 <div class="row" style="margin-left: 160px;margin-top:25px"> <div><%= f.submit(:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px") %> </div> 
-<div> <%= link_to 'Back', patients_path, :style => "color:white;font-size: 14px;
+<div> <%= link_to 'Back', profile_path(@profile.id), :style => "color:white;font-size: 14px;
     line-height: 22px;"%> </div> 
   </div>
 <% end %>

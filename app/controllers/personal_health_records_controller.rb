@@ -14,9 +14,9 @@ class PersonalHealthRecordsController < ApplicationController
 
   # GET /personal_health_records/new
   def new
-    @id = params[:id]
+    id = params[:id]
     @personal_health_record = PersonalHealthRecord.new
-    @profile = Profile.all
+    @profile = Profile.find(id)
   end
 
   # GET /personal_health_records/1/edit
@@ -79,6 +79,6 @@ class PersonalHealthRecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def personal_health_record_params
-      params[:personal_health_record].permit(:allergies,:blood_type,:chronic_disease,:medication,:organ_donor,:patient_id)
+      params[:personal_health_record].permit(:allergies,:blood_type,:chronic_disease,:medication,:organ_donor,:profile_id)
     end
 end
