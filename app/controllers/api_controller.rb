@@ -26,9 +26,13 @@ class ApiController < ApplicationController
 		@profile = Profile.find(params[:id])
 		puts "In mailer"
 
+		if (PkPassbuilder.make_pass(params[:id]))
 		## make and sign a new pkpass
-		UserMailer.send_pass(@profile.email,@profile.first_name).deliver
-		head 200, content_type: "text/html"
+			UserMailer.send_pass(@profile.id,@profile.email_address ,@profile.first_name).deliver
+			head 201, content_type: "text/html"
+		else 
+			head 201, content_type: "text/html"
+		end
 	end
 
 

@@ -106,10 +106,15 @@ class PassEndpointController < ApplicationController
 	end
 
 	def pkpass ## certify, package, and send pass
-		puts "in IPASS: send pkpass ::::::::::::::::::::::"
-		## make pass from user_id,CERIFY, package and put in
-		send_file("public/pkpass/test.pkpass")
+		id = params[:id]
 
+		puts "in IPASS: send pkpass ::::::::::::::::::::::"
+
+		if (PkPassbuilder.make_pass(params[:id]))
+			send_file("public/pkpass/#{params[:id]}/prysmic.pkpass")
+		else 
+			puts ""
+		end
 	end
 
   private

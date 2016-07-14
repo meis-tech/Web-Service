@@ -28,11 +28,14 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
 
     picture = params[:profile][:picture]
-    puts picture
-    puts "ASDASDASDASDASDADADASAS"
-    directory = "app/assets/images"
-    path = File.join(directory, name)
-    File.open(path, "wb") { |f| f.write(picture.read) }
+    if picture != nil
+      name = @profile.first_name
+      puts picture
+      puts "ASDASDASDASDASDADADASAS"
+      directory = "app/assets/images"
+      path = File.join(directory, name)
+      File.open(path, "wb") { |f| f.write(picture.read) }
+    end
 
     @profile.user_id = current_user.id
     respond_to do |format|

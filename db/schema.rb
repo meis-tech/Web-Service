@@ -103,21 +103,13 @@ ActiveRecord::Schema.define(version: 20160711220406) do
   create_table "profile_passes", force: true do |t|
     t.string   "serial_no"
     t.integer  "profile_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "middle_initial"
-    t.string   "DOB"
-    t.string   "sex"
-    t.string   "address"
-    t.string   "email_address"
-    t.string   "phone_number"
-    t.string   "emergency_contact"
-    t.text     "text"
-    t.string   "last_updated"
+    t.integer  "personal_health_record_id"
+    t.datetime "last_modified"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "profile_passes", ["personal_health_record_id"], name: "index_profile_passes_on_personal_health_record_id", using: :btree
   add_index "profile_passes", ["profile_id"], name: "index_profile_passes_on_profile_id", using: :btree
 
   create_table "profiles", force: true do |t|

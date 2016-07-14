@@ -52,13 +52,13 @@ Rails.application.routes.draw do
 ## IPASS ANS Endpoints
   post  'v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#register"
   delete  'v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#unregister"
-  get '/v1/devices/:device_id/registrations/:passtype_id', :to => "pass_endpoint#ask_for_serials"
+  get 'v1/devices/:device_id/registrations/:passtype_id', :to => "pass_endpoint#ask_for_serials"
   get 'v1/passes/:passtype_id/:serial_number', :to => "pass_endpoint#get_new_pass"
 
-  get 'pkpass.pass', :to => "pass_endpoint#pkpass"
+  get 'pkpass.pass/:id', :to => "pass_endpoint#pkpass", :as => "get/pass/direct"
 
 ## IPAD Endpoints
-  get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email"
+  get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email", :as => "get/pass/email"
   get 'api/get_record/:id', :to => "api#get_profile_info"
   get 'api/get_all_records', :to => "api#get_all_records"
   get 'api/send_picture/:id', :to => "api#send_picture"

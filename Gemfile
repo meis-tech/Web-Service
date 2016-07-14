@@ -41,8 +41,13 @@ gem 'carrierwave'
 # gem 'cancan'
  gem 'devise'
 
+## making iphone passes
+ gem 'passbook'
+# gem 'grocer'
+ 
 # for qrcode generator 
  gem 'rqrcode'
+
 
 
 # Use ActiveModel has_secure_password
