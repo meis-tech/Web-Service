@@ -44,6 +44,8 @@ class PersonalHealthRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @personal_health_record.update(personal_health_record_params)
+
+        
         format.html { redirect_to @personal_health_record, notice: 'Personal health record was successfully updated.' }
         format.json { render :show, status: :ok, location: @personal_health_record }
       else

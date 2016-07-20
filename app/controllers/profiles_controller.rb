@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
 
     picture = params[:profile][:picture]
     if picture != nil
-      name = @profile.first_name
+      name = @profile.first_name + ".png"
       puts picture
       puts "ASDASDASDASDASDADADASAS"
       directory = "app/assets/images"

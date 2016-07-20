@@ -34,6 +34,12 @@ class WelcomeController < ApplicationController
     @environments = Environment.all
   end
 
+  def verify
+    puts "we about to send"
+    send_file("public/uploads/rGd4Mp6Gt.html")
+    puts "we should have sent"
+  end
+
   def docter
   end
 

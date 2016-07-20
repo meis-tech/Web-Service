@@ -35,9 +35,13 @@ class ApiController < ApplicationController
 		end
 	end
 
+	def send_back
+		send_file("app/assets/images/back.jpg")
+	end
 
 	def send_picture
-		@profile = Profile.find(params[:id])
-		render :layout => false
+			profile = Profile.find(params[:id])
+			send_file("app/assets/images/" + profile.first_name + ".png")
+		## render :layout => false
 	end
 end

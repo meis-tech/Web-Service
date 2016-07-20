@@ -4,8 +4,8 @@
 <!--   	  <p id="notice" style="color:white;margin-left:200px">< notice %></p> -->
   	  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
   	  	<div style="height:250px;">
-  	  	  <% if @profile.has_image?(@profile) %>
-  	  	    <%= image_tag("#{@profile.id}.png", :style => "width:250px;height:250px;float:right;") %>
+  	  	  <% if @profile.has_image?(@profile)%>
+  	  	    <%= image_tag("#{@profile.first_name}.png", :style => "width:250px;height:250px;float:right;") %>
   	  	  <% else %>
 			<%= image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
 		  <% end %>

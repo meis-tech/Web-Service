@@ -43,7 +43,7 @@ gem 'carrierwave'
 
 ## making iphone passes
  gem 'passbook'
-# gem 'grocer'
+ gem 'grocer'
  
 # for qrcode generator 
  gem 'rqrcode'

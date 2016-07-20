@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+    get 'Gd4Mp6Gt.html', :to => "welcome#verify"
+
     get 'user_landing', :as => "welcome/user", :to => "welcome#user_landing"
     get 'get_network', :as => "welcome/get_network", :to => "welcome#get_network"
 
@@ -50,23 +52,30 @@ Rails.application.routes.draw do
 
 
 ## IPASS ANS Endpoints
-  post  'v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#register"
-  delete  'v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#unregister"
-  get 'v1/devices/:device_id/registrations/:passtype_id', :to => "pass_endpoint#ask_for_serials"
-  get 'v1/passes/:passtype_id/:serial_number', :to => "pass_endpoint#get_new_pass"
+#  post  '/v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#register", :constraints => {:passtype_id => /[^\/]+/}
 
-  get 'pkpass.pass/:id', :to => "pass_endpoint#pkpass", :as => "get/pass/direct"
+
+#  delete  '/v1/devices/:device_id/registrations/:passtype_id/:serial_number', :to => "pass_endpoint#unregister", :constraints => {:passtype_id => /[^\/]+/}
+#  get '/v1/devices/:device_id/registrations/:passtype_id', :to => "pass_endpoint#ask_for_serials", :constraints => {:passtype_id => /[^\/]+/}
+#  get '/v1/passes/:passtype_id/:serial_number', :to => "pass_endpoint#get_new_pass", :constraints => {:passtype_id => /[^\/]+/}
+#  post '/v1/log', :to => "pass_endpoint#logs"
+  get '/pkpass.pass/:id', :to => "pass_endpoint#pkpass", :as => "get/pass/direct"
 
 ## IPAD Endpoints
   get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email", :as => "get/pass/email"
   get 'api/get_record/:id', :to => "api#get_profile_info"
   get 'api/get_all_records', :to => "api#get_all_records"
   get 'api/send_picture/:id', :to => "api#send_picture"
+  get 'api/send_back', :to => "api#send_back"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+
+
   # You can have the root of your site routed with "root"
   root 'welcome#login'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

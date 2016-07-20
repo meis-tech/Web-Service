@@ -41,6 +41,12 @@ class PassEndpointController < ApplicationController
 
 	def unregister ## remove all records
 		puts "in IPASS : UNREGISTER :::::::::::::::::::::"
+		reg = Registration.where(:device_id => params[:device_id], :passtype_id => params[:passtype_id], :serial_no => params[:serial_number]).first
+		reg.destroy
+		dev = Device.where(:device_id => params[:device_id]).first
+		dev.destroy
+		#pp = PassProfile.where(:profile_id => params[:serial_number]).first
+		#pp.destroy
 	end
 
 	## Getting the Serial Numbers for Passes Associated with a Device
@@ -63,11 +69,14 @@ class PassEndpointController < ApplicationController
 					@serials += ProfilePass.where(:serial_no => id).pluck(:serial_no).first + ","
 				end
 				puts @serials
-				puts @serials = @serials.chop
+				@serials = @serials.chop
 				puts @serials
+				puts "ASDASDASDASDASDASDAS"
+				text = '{"lastUpdated":"' + @now.to_s + '", "serialNumbers" : ["' + @serials + '"] }'
+				puts text
 				respond_to do |format|
   					format.json do
-    				render json: { lastUpdated: @now, serialNumbers: "[" + @serials + "]" }.to_json
+    				render text: '{"lastUpdated":"' + @now.to_s + '", "serialNumbers" : ["' + @serials + '"] }'
   					end
   				end
 				#render :json => {"lastUpdated": @now, "serialNumbers": [@serial]}
@@ -80,7 +89,7 @@ class PassEndpointController < ApplicationController
 				puts @serials
 				respond_to do |format|
   					format.json do
-    				render json: { lastUpdated: @now, serialNumbers: "[" + @serials + "]" }.to_json
+    				render text: '{"lastUpdated":"' + @now.to_s + '", "serialNumbers" : ["' + @serials + '"] }'
   					end
   				end
 	 		end
@@ -92,20 +101,31 @@ class PassEndpointController < ApplicationController
 		puts params[:passtype_id]
 		## get serial_number
 		## package new pass
-		## put in /public/pkpass/:serial_number/pass.pkpass
-		## send_file(/public/pkpass/:serial_number/pass.pkpass)
-		send_file("public/pkpass/test.pkpass")
+		PkPassbuilder.make_pass(params[:serial_number])
+		# put in /public/pkpass/:serial_number/pass.pkpass
+		send_file("public/pkpass/" + params[:serial_number] + "/prysmic.pkpass", type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass")
+		#send_file("/public/pkpass/" + params[:serial_number] + "/prysmic.pkpass")
 	end
 
 	def notify_apn
 		#unconnected
 	end
 
-	def get_logs
-		#unconnected
+	def logs
+		puts params[:id]
+		puts params[:logs]
+		long_logs = params[:logs]
+		input = ""
+		long_logs.each do |logg|
+  			input += logg.to_s
+		end
+		log = Log.new(:log => input)
+		log.save
+		head 200, content_type: "text/html"
 	end
 
 	def pkpass ## certify, package, and send pass
+		#PkPassbuilder.push_to_apple
 		id = params[:id]
 
 		puts "in IPASS: send pkpass ::::::::::::::::::::::"
