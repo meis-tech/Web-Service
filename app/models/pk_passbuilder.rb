@@ -1,7 +1,7 @@
 class PkPassbuilder
 	def self.push_to_apple
 
-	Passbook::PushNotification.send_notification Device.find(19).push_token
+	Passbook::PushNotification.send_notification Device.find(22).push_token
 	# 	token = Device.find(12).push_token
 	# 	pusher = Grocer.pusher(
 	# 		certificate: "public/certs/certificate.pem",
@@ -58,7 +58,7 @@ class PkPassbuilder
 
 	private 
 		def self.standard_text(serial_no)
-			domain = "https://760b79a1.ngrok.io"
+			domain = "https://0d48e5df.ngrok.io"
 			# domain = "https://prysmic.com/"
 			profile = Profile.find(serial_no)
 			name = profile.first_name + " " + profile.last_name 

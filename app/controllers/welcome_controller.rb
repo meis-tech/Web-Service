@@ -1,5 +1,12 @@
 class WelcomeController < ApplicationController
   def login
+
+    ## TEST REQUEST PONT FOR APPLE PUSH NOTIFACTIONS SERVER ###ß
+    require 'open-uri'
+    result = open('http://requestb.in/p18p0np1')
+    result.lines { |f| f.each_line {|line| p line} }
+    ###########################################################
+
   	puts "::::::::::::::: LOGIN :::::::::::::::::::"
   	if user_signed_in?
       if current_user.super_admin?
@@ -36,7 +43,7 @@ class WelcomeController < ApplicationController
 
   def verify
     puts "we about to send"
-    send_file("public/uploads/rGd4Mp6Gt.html")
+    send_file("public/uploads/Gd4Mp6Gt.html")
     puts "we should have sent"
   end
 

@@ -7,9 +7,22 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 
-
 module Meis
   class Application < Rails::Application
+
+    initializer 'setup_asset_pipeline', :group => :all do |app|
+      # We don't want the default of everything that isn't js or css, because it pulls too many things in
+      app.config.assets.precompile.shift
+      # Explicitly register the extensions we are interested in compiling
+      app.config.assets.precompile.push(Proc.new do |path|
+        File.extname(path).in? [
+          '.html', '.erb', '.haml', # Templates
+          '.png', '.gif', '.jpg', '.jpeg', # Images
+          '.eot', '.otf', '.svc', '.woff', '.ttf', # Fonts
+        ]
+      end)
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -87,7 +100,7 @@ module Passbook
             puts @serials
             @serials = @serials.chop
             puts @serials
-            puts "ASDASDASDASDASDASDAS"
+            puts "no update since"
             text = '{"lastUpdated":"' + @now.to_s + '", "serialNumbers" : ["' + @serials + '"] }'
             puts text
 
@@ -122,9 +135,14 @@ module Passbook
       the_pass_type_identifier = options["passTypeIdentifier"]
       the_authentication_token = options['authToken']
 
+        puts "Geting reg => "
         reg = Registration.where(:device_id => device_library_identifier, :passtype_id => the_pass_type_identifier, :serial_no => serial_number).first
+        puts reg.id
         reg.destroy
+
+        puts "Geting dev => "
         dev = Device.where(:device_id => device_library_identifier).first
+        puts dev.id
         dev.destroy
       # return a status 200 to indicate that the pass was successfully unregistered.
       {:status => 200}
@@ -145,7 +163,7 @@ module Passbook
     def self.passbook_log(log)
       # this is a VERY crude logging example.  use the logger of your choice here.
       puts "WE GETTING LOGS"
-      #puts log
+      puts log
       # input = ""
       #   long_logs = log[:logs]
       #   long_logs.each do |logg|

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Meis</title>
-  <%= favicon_link_tag 'favicon.ico' %>
+<!--    favicon_link_tag 'favicon.ico' %> -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -19,7 +19,11 @@
   </div>
        
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div>
+    <div> 
+<!--- DEVELOPMENT => PRoduction debugging-->
+    <%= "Environment: #{Rails.env}" %>
+<!--- DEVELOPMENT => PRoduction debugging-->
+
     <%= image_tag("LOGO2.png", :style => "width:810px;display: block;
     margin-left: auto;margin-right: auto;margin-bottom: 10px; ") %>
   </div>

@@ -16,8 +16,8 @@ Passbook.configure do |passbook|
 
   ######## GOING TO NEED THIS FOR PUSH NOTIFICATIONS #########
   ################# READ GROCER GEM ##########################
-
-    passbook.notification_gateway = 'gateway.push.apple.com'
+    ##passbook.notification_gateway = 'gateway.sandbox.push.apple.com' ##### DEV #####
+    passbook.notification_gateway = 'gateway.push.apple.com'   ##### PROD ######
     passbook.notification_passphrase = 'dan123'
     passbook.notification_cert = Rails.root.join("public/certs/certificate.pem")
 end
