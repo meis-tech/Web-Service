@@ -1,35 +1,29 @@
 class Profile < ActiveRecord::Base
 	require 'uri'
+	mount_uploader :image, AvatarUploader
 
 	has_many :personal_health_records
 	has_many :emergency_alerts
+	has_many :emergency_contacts
 	has_many :download_tickets
 	has_many :profile_passes
 	belongs_to :environment
 	belongs_to :user
 
-	def self.upload_image(profile, image)
-		puts "was called"
-		File.open(Rails.root.join('public', 'uploads', image.original_filename), 'wb') do |file|
-      		file.write(image.read)
-    	end
-    	puts "lalalallalala:::::"
-    	puts image.original_filename
-    	response = Cloudinary::Uploader.upload("public/uploads/#{image.original_filename}")
-    	puts response
-    	profile.image_name = response["public_id"]
-    	profile.url = response["url"]
-    	profile.secure_url = response["secure_url"]
-    	profile.save
-	end
-
-	def has_image?(profile)
-		return true
-	end
-
-	def image
-		send_file("public/uploads/images/1")
-	end
+	# def self.upload_image(profile, image)
+	# 	puts "was called"
+	# 	File.open(Rails.root.join('public', 'uploads', image.original_filename), 'wb') do |file|
+ #      		file.write(image.read)
+ #    	end
+ #    	puts "lalalallalala:::::"
+ #    	puts image.original_filename
+ #    	response = Cloudinary::Uploader.upload("public/uploads/#{image.original_filename}")
+ #    	puts response
+ #    	profile.image_name = response["public_id"]
+ #    	profile.url = response["url"]
+ #    	profile.secure_url = response["secure_url"]
+ #    	profile.save
+	# end
 
 	def record?
 		back = false;

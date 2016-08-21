@@ -46,7 +46,14 @@ Rails.application.routes.draw do
     get 'admin/view_devices', :as => "admin/view_devices", :to => "admin#view_devices"
     get 'admin/view_profile_passes', :as => "admin/view_profile_passes", :to => "admin#view_profile_passes"
 
-  resources :profiles
+  resources :profiles do
+    resources :emergency_contacts
+  end
+
+  get 'profiles/image/:id', :as => "profiles/image", :to => 'profiles#get_image'
+
+  get 'contact/delete/:id', :as => "emergency_contacts/delete", :to => 'emergency_contacts#delete'
+
     get 'profiles/give_profile_info/:id', :as => "profiles/give_profile_info", :to => 'profiles#give_profile_info'
     get 'profiles/generate_qr/:id', :as => "profiles/generate_qr", :to => 'profiles#generate_qr'
 
@@ -62,10 +69,14 @@ Rails.application.routes.draw do
   get '/pkpass.pass/:id', :to => "pass_endpoint#pkpass", :as => "get/pass/direct"
 
 ## IPAD Endpoints
-  get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email", :as => "get/pass/email"
+  get 'api/wake', :to => "api#wake"
   get 'api/get_record/:id', :to => "api#get_profile_info"
-  get 'api/get_all_records', :to => "api#get_all_records"
+  get 'api/get_medical/:id', :to => "api#get_medical_info"
   get 'api/send_picture/:id', :to => "api#send_picture"
+  get 'api/create_alert/:id', :to => "api#create_alert"
+
+  get 'api/send_pass_by_email/:id', :to => "api#send_pass_by_email", :as => "get/pass/email"
+  get 'api/get_all_records', :to => "api#get_all_records"
   get 'api/send_back', :to => "api#send_back"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

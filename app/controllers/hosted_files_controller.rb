@@ -21,22 +21,15 @@ class HostedFilesController < ApplicationController
   end
 
   def create
-    name = hosted_file_params[:file_path].original_filename
-    puts name
     @hosted_file = HostedFile.new(hosted_file_params)
-    @hosted_file.file_name = hosted_file_params[:file_path].original_filename
-
-    conflict_file = HostedFile.all.where(:file_name => name)
-    if conflict_file != nil
-      ## respond with error
-      redirect_to hosted_files_path
-    else 
-      @hosted_file.save
-      file_data = @hosted_file.file_path
-      directory = "public/uploads/hosted_files"
-      path = File.join(directory, name)
-      File.open(path, "wb") { |f| f.write(file_data.read) }
-      respond_with(@hosted_file)
+     respond_to do |format| 
+      if @hosted_file.save
+        format.html { redirect_to @hosted_file, notice: 'File was successfully created.' }
+        format.json { render :show, status: :created, location: @hosted_file  }
+      else
+        format.html { render :new }
+        format.json { render json: @hosted_file .errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -57,6 +50,6 @@ class HostedFilesController < ApplicationController
     end
 
     def hosted_file_params
-      params[:hosted_file].permit(:name, :version, :phone_type, :description, :shown, :file_path)
+      params[:hosted_file].permit(:name, :version, :phone_type, :description, :shown, :file_path, :file)
     end
 end

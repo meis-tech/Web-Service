@@ -9,11 +9,11 @@ class DownloadTicketsController < ApplicationController
   end
 
   def show
-    if @download_ticket.time_expired > Time.now.utc && @download_ticket.page_visited == false
+    if @download_ticket.page_visited == false
       @download_ticket.page_visited = true
       @download_ticket.save
-      filename = HostedFile.where(:id => @download_ticket.hosted_file_id).first.file_name
-      send_file("public/uploads/hosted_files/#{filename}")
+      @file = HostedFile.where(:id => @download_ticket.hosted_file_id).first
+      send_file(@file.file.path)
     else
       redirect_to expired_download_path
     end
@@ -42,8 +42,13 @@ class DownloadTicketsController < ApplicationController
     @download_ticket.time_expired = (DateTime.now.to_time + 1.hour).to_datetime
     @download_ticket.page_visited = false
     @download_ticket.save
+
     puts "this is our endpoint:"
     puts request.base_url + "/download_tickets/" + @download_ticket.id.to_s
+
+    ### LOGIC TO EMAIL OR PHONE NUMBER MUST BE ADDED ######
+    flash[:notice] = "Your Download point is: " + request.base_url + "/download_tickets/" + @download_ticket.id.to_s
+    #######################################################
     redirect_to welcome_user_url
   end
 

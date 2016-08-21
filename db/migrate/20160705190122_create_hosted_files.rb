@@ -6,6 +6,7 @@ class CreateHostedFiles < ActiveRecord::Migration
       t.string :phone_type
       t.string :description
       t.string :file_name
+      t.string :file
       t.boolean :shown, :default => false
       t.integer :times_modified, :default => 0
       t.timestamps

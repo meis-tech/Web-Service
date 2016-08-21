@@ -1,14 +1,17 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <div id="grad" style="width:650px;height:500px;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding-top: 50px;padding-bottom: 50px;">
+  <div id="grad" style="width:650px;overflow:auto;display: block;margin-left: auto;margin-right: auto; border-radius: 15px;font-family:disco;padding-top: 50px;padding-bottom: 20px;">
   	  <div style="margin-bottom: 30px;margin-bottom: 60px;FONT-SIZE: 38px;color: white;padding-left: 95px;padding-right: 95px;"> Profile Information</div>
 <!--   	  <p id="notice" style="color:white;margin-left:200px">< notice %></p> -->
   	  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
   	  	<div style="height:250px;">
-  	  	  <% if @profile.has_image?(@profile)%>
-  	  	    <%= image_tag("#{@profile.first_name}.png", :style => "width:250px;height:250px;float:right;") %>
-  	  	  <% else %>
-			<%= image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
-		  <% end %>
+<!--   	  	   if @profile.has_image?(@profile)%>
+  	  	    < image_tag("#{@profile.first_name}.png", :style => "width:250px;height:250px;float:right;") %>
+  	  	   else %>
+			< image_tag("NO_IMAGE.png", :style => "height:250px;float:right;") %>
+		   end %> -->
+		   <div stlye="width:300px;height:300px">
+				<%= image_tag @profile.image.condese.to_s if @profile.image.condese.present? %>
+		   </div>
   	  	</div>
   	  </div>
 
@@ -21,6 +24,36 @@
 		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%= @profile.address %></div>
 		<div class="row" style="height: 24px;font-size: 21px;color:white;margin-top:12px;"><%=  %></div>
   	  </div>
+  	  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 20px;">
+  	  	<div class="row" style="padding-left:60px;height: 24px;font-size: 21px;color:white">Emergency Contacts</div>
+
+
+  <table id="profile_table" style="width: 600px;border-radius:15px;border-radius:15px;background-color:white;margin-left: auto;">
+    <thead>
+      <tr style="border-bottom:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 15px;border-right: 1px solid gray;text-align: center;"> First Name </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 15px;border-right: 1px solid gray;text-align: center;"> Last Name</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 15px;border-right: 1px solid gray;text-align: center;"> Phone Number</td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 8px;font-size: 15px;text-align: center;"> select</td>
+      </tr>
+    </thead>
+    <tbody>
+  	  	<% @profile.emergency_contacts.each do |contact| %>
+      <tr style="border-top:1px solid gray">
+        <td style="color: #3A5CAC;font-family: disco;padding: 14px;border-right: 1px solid gray;border-bottom-left-radius: 10px;padding-left:18px;padding-right:18px"> <%= contact.first_name%> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;border-bottom-left-radius: 10px;"> <%= contact.last_name%> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= contact.phone_number %> </td>
+        <td style="color: #3A5CAC;font-family: disco;padding: 10px;border-right: 1px solid gray;" > <%= link_to "Edit", edit_profile_emergency_contact_path(@profile.id, contact.id) %> <%= link_to "Delete", emergency_contacts_delete_path(:id => contact.id, :profile_id => @profile.id) %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<div>
+	<%= link_to 'Add contact', new_profile_emergency_contact_path(@profile.id), :style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px;margin-left:450px;padding:5px;margin-top:10px" %> 
+</div>
+
+
 
   	  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 20px;">
 	  	  <div class="row" style="margin-left: 120px;margin-top:25px"> 

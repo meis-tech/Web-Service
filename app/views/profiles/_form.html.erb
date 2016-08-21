@@ -90,6 +90,19 @@
 <div class="row" style="margin-top: 8px;">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div style= "text-align: right;color: white;font-size: 23px;
+    height: 30px;line-height: 23px;">address
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:address, :style => "border: none;border-radius: 7px;height: 25px;
+    width: 265px;") %></div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 8px;">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div style= "text-align: right;color: white;font-size: 23px;
     height: 30px;line-height: 23px;">gender
     </div>
   </div>
@@ -103,41 +116,12 @@
 <div class="row" style="margin-top: 8px;">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div style= "text-align: right;color: white;font-size: 23px;
-    height: 30px;line-height: 23px;">emergency contanct
-    </div>
-  </div>
-
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:emergency_contact, :style => "border: none;border-radius: 7px;height: 25px;
-    width: 265px;") %></div>
-  </div>
-</div>
-
-
-
-<div class="row" style="margin-top: 8px;">
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div style= "text-align: right;color: white;font-size: 23px;
-    height: 30px;line-height: 23px;">address
-    </div>
-  </div>
-
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.text_field(:address, :style => "border: none;border-radius: 7px;height: 25px;
-    width: 265px;") %></div>
-  </div>
-</div>
-
-
-<div class="row" style="margin-top: 8px;">
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div style= "text-align: right;color: white;font-size: 23px;
     height: 30px;line-height: 23px;">identifying image
     </div>
   </div>
 
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.file_field(:picture, :style => "border: none;border-radius: 7px;height: 25px;
+    <div style="border: none;border-radius: 7px;height: 20px;"> <%= f.file_field(:image, :style => "border: none;border-radius: 7px;height: 25px;
     width: 265px;") %> </div>
   </div>
 </div>

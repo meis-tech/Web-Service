@@ -2,9 +2,9 @@ class WelcomeController < ApplicationController
   def login
 
     ## TEST REQUEST PONT FOR APPLE PUSH NOTIFACTIONS SERVER ###ß
-    require 'open-uri'
-    result = open('http://requestb.in/p18p0np1')
-    result.lines { |f| f.each_line {|line| p line} }
+#    require 'open-uri'
+#    result = open('http://requestb.in/p18p0np1')
+#    result.lines { |f| f.each_line {|line| p line} }
     ###########################################################
 
   	puts "::::::::::::::: LOGIN :::::::::::::::::::"

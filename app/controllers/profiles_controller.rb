@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy, :generate_qr]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy, :generate_qr, :get_image]
 
   # GET /patients
   # GET /patients.json
@@ -26,17 +26,6 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.update(profile_params)
-
-    picture = params[:profile][:picture]
-    if picture != nil
-      name = @profile.first_name + ".png"
-      puts picture
-      puts "ASDASDASDASDASDADADASAS"
-      directory = "app/assets/images"
-      path = File.join(directory, name)
-      File.open(path, "wb") { |f| f.write(picture.read) }
-    end
-
     @profile.user_id = current_user.id
     respond_to do |format|
       if @profile.save
@@ -52,18 +41,6 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /patients/1
   # PATCH/PUT /patients/1.json
   def update
-
-    #File.delete("app/assets/images/#{@profile.id}.png")
-    picture = params[:profile][:picture]
-    if picture != nil
-      puts picture
-      puts "ASDASDASDASDASDADADASAS"
-      directory = "app/assets/images"
-      path = File.join(directory, @profile.id.to_s + ".png")
-      File.open(path, "wb") { |f| f.write(picture.read) }
-    end
-
-
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -89,6 +66,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def get_image
+    puts @profile.id
+    puts "yayayayay"
+
+    ## if send doesnt work, render image in view
+    send_file(@profile.image.file.path)
+  end
+
 ##### OBSOLETE ######
   def give_profile_info
     # @personal_health_record = PersonalHealthRecord.where(:id => patient.personal_health_record.id);
@@ -97,7 +82,6 @@ class ProfilesController < ApplicationController
     end
     render json: @profile
   end
-  ###################
 
   def generate_qr
     require 'chunky_png'
@@ -110,6 +94,9 @@ class ProfilesController < ApplicationController
     puts "WE OUT"
   end
 
+    ###################
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
@@ -118,6 +105,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params[:profile].permit(:first_name, :last_name, :middle_initial, :DOB, :sex, :email, :address, :phone_number, :emergency_contact, :email_address, :text, :environment_id, :attached)
+      params[:profile].permit(:first_name, :last_name, :middle_initial, :DOB, :sex, :email, :address, :phone_number, :image, :email_address, :text, :environment_id, :attached)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714051230) do
+ActiveRecord::Schema.define(version: 20160812184334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 20160714051230) do
   add_index "emergency_alerts", ["personal_health_record_id"], name: "index_emergency_alerts_on_personal_health_record_id", using: :btree
   add_index "emergency_alerts", ["profile_id"], name: "index_emergency_alerts_on_profile_id", using: :btree
 
+  create_table "emergency_contacts", force: true do |t|
+    t.integer  "profile_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "email_address"
+    t.string   "address"
+    t.string   "relationship"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emergency_contacts", ["profile_id"], name: "index_emergency_contacts_on_profile_id", using: :btree
+
   create_table "environment_users", id: false, force: true do |t|
     t.integer "environment_id"
     t.integer "user_id"
@@ -80,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160714051230) do
     t.string   "phone_type"
     t.string   "description"
     t.string   "file_name"
+    t.string   "file"
     t.boolean  "shown",          default: false
     t.integer  "times_modified", default: 0
     t.datetime "created_at"
@@ -125,9 +140,8 @@ ActiveRecord::Schema.define(version: 20160714051230) do
     t.string   "address"
     t.string   "email_address"
     t.string   "phone_number"
-    t.string   "emergency_contact"
     t.text     "text"
-    t.string   "url"
+    t.string   "image"
     t.boolean  "attached"
     t.integer  "environment_id"
     t.integer  "user_id"

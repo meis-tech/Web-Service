@@ -37,7 +37,8 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 gem 'rails_12factor'
 
 gem 'carrierwave'
-
+#gem  'rmagick'
+gem 'rmagick'
 # gem 'cancan'
  gem 'devise'
 

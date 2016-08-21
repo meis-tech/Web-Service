@@ -9,13 +9,11 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :address
       t.string :email_address
       t.string :phone_number
-      t.string :emergency_contact
       t.text :text
-      t.string :url
+      t.string :image
       t.boolean :attached
       t.belongs_to :environment, index:true
       t.belongs_to :user, index:true
-
 
       t.timestamps
     end
