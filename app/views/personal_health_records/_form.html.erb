@@ -75,10 +75,10 @@
   </div>
 </div>
 
-<%= f.hidden_field :profile_id, :value => @profile.id %>
+<%= f.hidden_field :profile_id, :value => current_user.profile.id %>
 
 <div class="row" style="margin-left: 160px;margin-top:25px"> <div><%= f.submit(:style => "border-radius: 10px;border: none;color: blue;background-color: white;float:left;margin-right:10px") %> </div> 
-<div> <%= link_to 'Back', profile_path(@profile.id), :style => "color:white;font-size: 14px;
+<div> <%= link_to 'Back', profile_path(current_user.profile.id), :style => "color:white;font-size: 14px;
     line-height: 22px;"%> </div> 
   </div>
 <% end %>

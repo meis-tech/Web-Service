@@ -1,6 +1,6 @@
-<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-</div>
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+<div class="container">
+  <div class="row">
+<div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
   <div id="grad" style="width:275px;height:150px;display: block;border-radius: 15px;font-family:disco">
     <div style="text-align:center;">Environment</div>
     <% if current_user.joined_environment? %>
@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
   <div id="grad" style="width:275px;height:150px;display: block;border-radius: 15px;font-family:disco">
     <div style="text-align:center;">Profile</div>
     <% if current_user.profile != nil%>
@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
   <div id="grad" style="width:275px;height:150px;display: block;border-radius: 15px;font-family:disco">
     <div style="text-align:center;">Phone</div>
     <% if current_user.profile == nil%>
@@ -65,8 +65,7 @@
     <% end %>
   </div>
 </div>
-
-<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+</div>
 </div>
 
 <!--     <div class= "row" style="padding-top:105px;padding-left:40px;margin-left: 150px;">
